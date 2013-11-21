@@ -1,3 +1,6 @@
 1.  be able to compare time elapsed between different algorithms and different implementations of the same algorithm
 2.  be able to accept delimited list of text and salt combinations
 3.  have GUI version AND command line version
+4.  Be able to create an appendable merkle tree.  Act as client to verify that text provided is in merkle tree.
+5.  Be able to store merkle tree
+6.  Be able to store statistics about other hash operations (#1-3)
