@@ -1,17 +1,34 @@
 import sys
+import hashlib
+import argparse
+
+def get_hash(text,salt,iterations,algorithm):
+    h = hashlib.new(algorithm)
+    h.update(text.encode("utf-8"))
+    return h.hexdigest()
 
 
-def get_hash(text)
+def get_md5_hash(text):
 
-salt = ""
-algorithm = "MD5"
-iterations = 1
+    m = hashlib.md5()
+    m.update(text.encode("utf-8"))
+    return m.hexdigest()
 
-if len(sys.argv) < 2:
-  print("Usage: hashes_text.py [sometext] [algorithm] [# of iterations] [salt]")
-  print ("defaults are empty string md5,1,null")
-  print ("so, here is the md5 hash of empty string")
-  print get_hash("")
-  
-for arg in sys.argv:
-  print(arg)
+
+
+def allowed_alg(algstring):
+    if algstring.upper() in hashlib.algorithms_available:
+        return algstring
+    else:
+        msg = "algorithm not recognized"
+        raise argparse.ArgumentTypeError(msg)
+
+parser = argparse.ArgumentParser(description="hash incoming text")
+parser.add_argument('--text','-t', default='')
+parser.add_argument('--alg','-alg',default='md5',type=allowed_alg)
+parser.add_argument('--iterations','-it',default=1,type=int)
+parser.add_argument('-salt',default='')
+args = parser.parse_args()
+my_it_args = vars(parser.parse_args())
+
+print(args.alg + " hash of " + args.text + " is " +get_hash(args.text,args.salt,args.iterations,args.alg))
