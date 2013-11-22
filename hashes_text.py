@@ -8,14 +8,6 @@ def get_hash(text,salt,iterations,algorithm):
     return h.hexdigest()
 
 
-def get_md5_hash(text):
-
-    m = hashlib.md5()
-    m.update(text.encode("utf-8"))
-    return m.hexdigest()
-
-
-
 def allowed_alg(algstring):
     if algstring.upper() in hashlib.algorithms_available:
         return algstring
