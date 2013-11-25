@@ -13,8 +13,8 @@ class TestHashFunctions(unittest.TestCase):
         self.assertEqual('5f4dcc3b5aa765d61d8327deb882cf99',self.hashtool.get_hash('password', '', 1, "md5"))
 
 
-    #def test_md5_salt(self):
-    #    self.assertEqual("b305cadbb3bce54f3aa59c64fec00dea",self.hashtool.get_hash('password','salt',1,"md5"))
+    def test_md5_salt(self):
+        self.assertEqual("b305cadbb3bce54f3aa59c64fec00dea",self.hashtool.get_hash('password','salt',1,"md5"))
 
     def test_md5_rounds(self):
         self.assertEqual('5f4dcc3b5aa765d61d8327deb882cf99',self.hashtool.get_hash('password', '', 1, "md5"))
