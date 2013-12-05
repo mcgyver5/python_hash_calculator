@@ -1,5 +1,6 @@
 __author__ = 'mcguit1'
 import unittest
+import timeit
 from hashtool import Hashtool
 
 
@@ -24,5 +25,19 @@ class TestHashFunctions(unittest.TestCase):
     #def test_md5_salt_rounds(self):
     #    self.assertEqual("25af6b5a72bc966299335d1aabcae3f7",self.hashtool.get_hash('password','salt',2,"md5"))
 
-    #def test_bcrypt(self):
-    #    self.assertEqual("the","the")
+    def test_bcrypt(self):
+        j = self.time_bcrypt_hash(300)
+        print("j is " + str(j))
+        #self.assertGreater(j,1,"time is wrong")
+        self.assertGreater(j,1,"time is wrong")
+
+    def time_bcrypt_hash(self,stretch_factor):
+        st = """\
+
+        from hashtool import Hashtool
+        hashtool = Hashtool()
+        hashtool.get_bcrypt_hash("password1",20)
+        """
+        j = timeit.Timer(st)
+
+        return j.timeit(1)
