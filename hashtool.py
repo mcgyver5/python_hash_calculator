@@ -35,4 +35,12 @@ class Hashtool():
 
     #input how long you want bcrypt to take and this function returns rounds.
     def tune_bcrypt(self,desired_seconds):
+        s = """\
+        from hashtool import Hashtool
+        hashtool = Hashtool()
+        hashtool.get_bcrypt_hash("password1",x)
+        """
+        #for x in range(1,20):
+        #    timer = timeit.Timer(s,setup='x=')
+        #    thetime = timer.timeit(1)
         pass
