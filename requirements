@@ -6,3 +6,4 @@
 6.  Be able to store statistics about other hash operations (#1-3)
 7.  While we are on crazy requirements, how about graphic visualizations about how various hash functions work?
     User can enter text of their choosing and watch the algorithm go to work on their text!
+8.  Another idea:  demonstrate the reduction functions of Rainbow tables, both graphically and in answers.
